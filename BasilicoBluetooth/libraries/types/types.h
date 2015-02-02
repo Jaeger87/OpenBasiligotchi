@@ -1,6 +1,6 @@
 /*
 *
-@file		type.h
+@file           type.h
 *
 */
 
@@ -9,21 +9,21 @@
 
 
 /***************************************************
- * attribute for mcu ( types, ... ) 
+ * attribute for mcu ( types, ... )
  ***************************************************/
 //#include "mcu_define.h"
-#define __MCU_AVR__	1
-#define __MCU_TYPE__	__MCU_AVR__
+#define __MCU_AVR__     1
+#define __MCU_TYPE__    __MCU_AVR__
 
 //---- Refer "Rom File Maker Manual Vx.x.pdf"
 #include <avr/pgmspace.h>
 
-#define	_ENDIAN_LITTLE_	0	/**<  This must be defined if system is little-endian alignment */
-#define	_ENDIAN_BIG_		1
-#define 	SYSTEM_ENDIAN		_ENDIAN_LITTLE_
+#define _ENDIAN_LITTLE_ 0       /**<  This must be defined if system is little-endian alignment */
+#define _ENDIAN_BIG_            1
+#define         SYSTEM_ENDIAN           _ENDIAN_LITTLE_
 
-#define	MAX_SOCK_NUM		4	/**< Maxmium number of socket  */
-#define	CLK_CPU			F_CPU		/**< 8Mhz(for serial) */
+#define MAX_SOCK_NUM            4       /**< Maxmium number of socket  */
+#define CLK_CPU                 F_CPU           /**< 8Mhz(for serial) */
 
 /* ## __DEF_IINCHIP_xxx__ : define option for iinchip driver *****************/
 //#define __DEF_IINCHIP_DBG__ /* involve debug code in driver (socket.c) */
@@ -42,7 +42,7 @@
 
 
 /**
-@brief	 __DEF_IINCHIP_MAP_xxx__ : define memory map for iinchip 
+@brief   __DEF_IINCHIP_MAP_xxx__ : define memory map for iinchip
 */
 #define __DEF_IINCHIP_MAP_BASE__ 0x8000
 #if (__DEF_IINCHIP_BUS__ == __DEF_IINCHIP_DIRECT_MODE__)
@@ -57,13 +57,13 @@
 #if (__MCU_TYPE__ == __MCU_AVR__)
    #ifdef __DEF_IINCHIP_INT__
       // iinchip use external interrupt 4
-      #define IINCHIP_ISR_DISABLE()	(EIMSK &= ~(0x10))
-      #define IINCHIP_ISR_ENABLE()	(EIMSK |= 0x10)
-      #define IINCHIP_ISR_GET(X)		(X = EIMSK)
-      #define IINCHIP_ISR_SET(X)		(EIMSK = X)
+      #define IINCHIP_ISR_DISABLE()     (EIMSK &= ~(0x10))
+      #define IINCHIP_ISR_ENABLE()      (EIMSK |= 0x10)
+      #define IINCHIP_ISR_GET(X)                (X = EIMSK)
+      #define IINCHIP_ISR_SET(X)                (EIMSK = X)
    #else
       #define IINCHIP_ISR_DISABLE()
-      #define IINCHIP_ISR_ENABLE()	
+      #define IINCHIP_ISR_ENABLE()      
       #define IINCHIP_ISR_GET(X)
       #define IINCHIP_ISR_SET(X)
    #endif
@@ -72,7 +72,7 @@
 #endif
 
 #ifndef NULL
-#define NULL		((void *) 0)
+#define NULL            ((void *) 0)
 #endif
 
 //typedef enum { false, true } bool;
@@ -133,33 +133,33 @@ typedef unsigned long uint32;
 typedef volatile unsigned long vuint32;
 
 /* bsd */
-typedef uint8			u_char;		/**< 8-bit value */
-typedef uint8 			SOCKET;
-typedef uint16			u_short;	/**< 16-bit value */
-typedef uint16			u_int;		/**< 16-bit value */
-typedef uint32			u_long;		/**< 32-bit value */
+typedef uint8                   u_char;         /**< 8-bit value */
+typedef uint8                   SOCKET;
+typedef uint16                  u_short;        /**< 16-bit value */
+typedef uint16                  u_int;          /**< 16-bit value */
+typedef uint32                  u_long;         /**< 32-bit value */
 
 typedef union _un_l2cval {
-	u_long	lVal;
-	u_char	cVal[4];
+        u_long  lVal;
+        u_char  cVal[4];
 }un_l2cval;
 
 typedef union _un_i2cval {
-	u_int	iVal;
-	u_char	cVal[2];
+        u_int   iVal;
+        u_char  cVal[2];
 }un_i2cval;
 
 
 /** global define */
-#define FW_VERSION		0x01010000	/* System F/W Version : 1.1.0.0	*/
-#define HW_VERSION	       0x01000000
+#define FW_VERSION              0x01010000      /* System F/W Version : 1.1.0.0 */
+#define HW_VERSION             0x01000000
 
 
-#define TX_RX_MAX_BUF_SIZE	2048
-#define TX_BUF	0x1100
-#define RX_BUF	(TX_BUF+TX_RX_MAX_BUF_SIZE)
+#define TX_RX_MAX_BUF_SIZE      2048
+#define TX_BUF  0x1100
+#define RX_BUF  (TX_BUF+TX_RX_MAX_BUF_SIZE)
 
-#define UART_DEVICE_CNT		1	/**< UART device number */
+#define UART_DEVICE_CNT         1       /**< UART device number */
 /* #define SUPPORT_UART_ONE */
 
-#endif		/* _TYPE_H_ */
+#endif          /* _TYPE_H_ */
